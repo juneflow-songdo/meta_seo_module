@@ -79,7 +79,36 @@ final router = GoRouter(
   ],
 );
 ```
+### Extended Usage
+```dart
+@override
+Widget build(BuildContext context) {
+  
+    // Add MetaSEO just into Web platform condition
+    if(kIsWeb) {
+      // Define MetaSEO object
+      MetaSEO meta = MetaSEO();
+      // add meta seo open graph tags as you want
+      meta.facebookAppID(facebookAppID: 'your_app_id');
+      meta.ogTitle(ogTitle: 'Example Screen');
+      meta.ogDescription(ogDescription: 'Example Screen Description');
+      meta.ogImage(ogImage: 'https://example.com/example.png');
 
-
-
-
+      // here you can add any tags does not exist in the package as this
+      meta.propertyContent(property: 'og:site_name', content: 'example');
+      
+      // or if you want to add twitter card meta tags just as the following
+      meta.twitterCard(twitterCard: TwitterCard.summaryLargeImage);
+      meta.twitterTitle(twitterTitle: 'Example Screen');
+      meta.twitterDescription(twitterDescription: 'Example Screen Description');
+      meta.twitterImage(twitterImage: 'https://example.com/example.png');
+    
+      // here you can add any tags does not exist in the package as this
+      meta.nameContent(name: 'twitter:site', content: '@mouaz_m_shahmeh');
+    }
+    
+    return const Scaffold(
+      body: Center(child: Text('Extended Meta SEO Web Example')),
+    );
+}
+```
